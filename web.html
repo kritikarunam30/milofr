@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milofr | Milo, For Real.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --cream: #F9F4E8;
+            --dark-cream: #F1E6D2;
+            --saffron: #C06C20;
+            --umber: #4A2C2A;
+            --text-gray: #666;
+            --border-style: 3px double var(--saffron);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--cream);
+            color: var(--umber);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--dark-cream);
+            padding: 20px 0;
+            border-bottom: var(--border-style);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-container a {
+            text-decoration: none;
+            color: var(--umber);
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .nav-container a:hover { color: var(--saffron); }
+
+        .logo-box img {
+            height: 90px;
+            width: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--saffron);
+            object-fit: cover;
+            background: #fff;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1500'); /* Placeholder bakery image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .hero p { font-size: 1.2rem; letter-spacing: 3px; font-weight: 300; }
+
+        /* --- SECTION STYLING --- */
+        section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "❧";
+            display: block;
+            font-size: 1.5rem;
+            color: var(--saffron);
+            margin-top: 10px;
+        }
+
+        /* --- SIGNATURES (CARDS) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 1px solid var(--dark-cream);
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ddd;
+        }
+
+        .card-body { padding: 25px; text-align: center; }
+        .card-body h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+        .card-body p { color: var(--text-gray); font-size: 0.95rem; }
+
+        /* --- FULL MENU LIST --- */
+        .menu-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            background: var(--dark-cream);
+            padding: 40px;
+            border: 1px solid var(--saffron);
+            border-radius: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted var(--saffron);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .item-name { font-weight: 600; }
+        .item-price { color: var(--saffron); font-weight: bold; }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            text-align: center;
+            background-color: var(--umber);
+            color: var(--cream);
+            padding: 60px 20px;
+            border-radius: 10px;
+        }
+
+        .contact-container input, .contact-container textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: var(--saffron);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.7; }
+
+        @media (max-width: 768px) {
+            .nav-container { gap: 15px; flex-direction: column; }
+            .hero h1 { font-size: 2.5rem; }
+            .menu-list { grid-template-columns: 1fr; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#menu">MENU</a>
+            <a href="#about">OUR STORY</a>
+            <div class="logo-box">
+                <img src="logo.png" alt="Milofr">
+            </div>
+            <a href="#signatures">SIGNATURES</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Milo, For Real.</h1>
+        <p>THE ART OF THE CINNAMON SWIRL</p>
+    </header>
+
+    <section id="signatures">
+        <h2 class="section-title">Desi Fusion Signatures</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=500');"></div>
+                <div class="card-body">
+                    <h3>Rasmalai Cinnamon Roll</h3>
+                    <p>Saffron-infused dough, cardamom cream cheese frosting, and crushed pistachios.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=500');"></div>
+                <div class="card-body">
+                    <h3>Gulab Jamun Tres Leches</h3>
+                    <p>A fusion masterpiece: Rose-scented sponge cake topped with warm syrup jamuns.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500');"></div>
+                <div class="card-body">
+                    <h3>Chai Spice Cronisant</h3>
+                    <p>Flaky croissant-donut hybrid tossed in our secret 12-spice masala sugar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title">The Daily Menu</h2>
+        <div class="menu-list">
+            <div>
+                <h3>Sweet Buns</h3>
+                <div class="menu-item"><span class="item-name">Classic Cinnamon Roll</span><span class="item-price">₹180</span></div>
+                <div class="menu-item"><span class="item-name">Dark Chocolate & Sea Salt</span><span class="item-price">₹220</span></div>
+                <div class="menu-item"><span class="item-name">Gajar Halwa Danish</span><span class="item-price">₹240</span></div>
+            </div>
+            <div>
+                <h3>Sips</h3>
+                <div class="menu-item"><span class="item-name">Kullar Chai</span><span class="item-price">₹90</span></div>
+                <div class="menu-item"><span class="item-name">Rose Cardamom Latte</span><span class="item-price">₹210</span></div>
+                <div class="menu-item"><span class="item-name">Filter Coffee (Classic)</span><span class="item-price">₹120</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">Visit the Sanctuary</h2>
+            <p>123 Vintage Lane, Arts District | Open 8 AM - 10 PM</p>
+            <form style="margin-top: 30px;">
+                <input type="text" placeholder="Your Name" required><br>
+                <input type="email" placeholder="Your Email" required><br>
+                <textarea rows="4" placeholder="Catering Enquiry or Message"></textarea><br>
+                <button type="submit" class="btn">Send a Note</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Milofr Cafe. Milo, For Real. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
